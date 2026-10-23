@@ -1,0 +1,38 @@
+[
+  {
+    "skills": [
+      "piloting-lacuna-cli"
+    ],
+    "query": "Find the top 5 whitespace voids but only care about core gameplay loop and social topology.",
+    "files": [],
+    "expected_behavior": [
+      "Runs lacuna voids with --weights core_loop=\u2026,social_topology=\u2026,aesthetic_world=0.0 --top-k 5 --json",
+      "Explains radius and simplex_diversity in the returned JSON",
+      "Does not hand-edit corpus vectors to steer the search"
+    ]
+  },
+  {
+    "skills": [
+      "piloting-lacuna-cli"
+    ],
+    "query": "Turn void-01 into a concrete opportunity and tell me how novel it really is.",
+    "files": [],
+    "expected_behavior": [
+      "Runs lacuna probe void-01 --json and lacuna synthesize void-01 --json (offline by default)",
+      "Reports closed_loop_proof.verified_in_void and min_distance_to_existing_entity",
+      "Uses --live-llm/--jev only when credentials are configured, otherwise stays deterministic"
+    ]
+  },
+  {
+    "skills": [
+      "piloting-lacuna-cli"
+    ],
+    "query": "Render the supply/demand field for the current corpus.",
+    "files": [],
+    "expected_behavior": [
+      "Runs lacuna field with --svg and/or --html output and --json",
+      "Explains the potential field rather than inventing values",
+      "Writes output to the stated files without modifying sources"
+    ]
+  }
+]

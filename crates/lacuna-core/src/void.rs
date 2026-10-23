@@ -62,8 +62,14 @@ pub struct VoidCandidate {
     pub facet_bridge: BTreeMap<String, String>,
 }
 
+/// Default admissible pairwise anchor distance window, tuned for text embeddings.
+pub const DEFAULT_ANCHOR_DISTANCE_WINDOW: [f64; 2] = [0.35, 0.92];
+
 /// Configuration knobs for [`find_interior_voids`].
+///
+/// Every field has a serde default, so a JSON config may name only the knobs it changes.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(default)]
 pub struct VoidSolverConfig {
     /// Number of top-ranked voids to return.
     pub top_k: usize,
@@ -73,6 +79,10 @@ pub struct VoidSolverConfig {
     pub min_void_separation: f64,
     /// Optional custom facet weights (defaults to `schema.default_weights()`).
     pub facet_weights: Option<BTreeMap<String, f32>>,
+    /// Inclusive `[min, max]` pairwise distance two anchors must have to span a simplex.
+    /// Text embeddings use [`DEFAULT_ANCHOR_DISTANCE_WINDOW`]; numeric facets
+    /// ([`crate::numeric`]) are usually denser and need a lower floor.
+    pub anchor_distance_window: [f64; 2],
 }
 
 impl Default for VoidSolverConfig {
@@ -82,6 +92,7 @@ impl Default for VoidSolverConfig {
             min_radius: 0.15,
             min_void_separation: 0.18,
             facet_weights: None,
+            anchor_distance_window: DEFAULT_ANCHOR_DISTANCE_WINDOW,
         }
     }
 }
@@ -103,6 +114,8 @@ pub fn find_interior_voids(
         .unwrap_or_else(|| schema.default_weights());
 
     let coords_2d = project_entities_2d(entities, &weights);
+    let [lo, hi] = config.anchor_distance_window;
+    let admissible = |d: f64| (lo..=hi).contains(&d);
 
     // Select diverse, high-signal anchor candidates (up to 28 representatives)
     // to form Delaunay simplex triples.
@@ -115,13 +128,13 @@ pub fn find_interior_voids(
             let i = anchor_indices[a_idx];
             let j = anchor_indices[b_idx];
             let dij = entity_distance(&entities[i], &entities[j], &weights);
-            if !(0.35..=0.92).contains(&dij) {
+            if !admissible(dij) {
                 continue;
             }
             for &k in &anchor_indices[(b_idx + 1)..] {
                 let dik = entity_distance(&entities[i], &entities[k], &weights);
                 let djk = entity_distance(&entities[j], &entities[k], &weights);
-                if !(0.35..=0.92).contains(&dik) || !(0.35..=0.92).contains(&djk) {
+                if !admissible(dik) || !admissible(djk) {
                     continue;
                 }
 

@@ -1,0 +1,38 @@
+[
+  {
+    "skills": [
+      "searching-farm-strategy-space"
+    ],
+    "query": "Use lacuna to suggest new nitrogen rates and storage plans for my farm.",
+    "files": [],
+    "expected_behavior": [
+      "Encodes decisions as numeric facets with lacuna_core::numeric, not hashed text",
+      "Decodes void centers back into concrete strategies and states they are hypotheses until an economic engine prices them",
+      "Never calls a void profitable or verified on its own"
+    ]
+  },
+  {
+    "skills": [
+      "searching-farm-strategy-space"
+    ],
+    "query": "Build lacuna for the browser.",
+    "files": [],
+    "expected_behavior": [
+      "Runs cargo build -p lacuna-wasm --target wasm32-unknown-unknown --profile wasm",
+      "Notes the module has no imports and exports memory, lacuna_alloc, lacuna_call, lacuna_free",
+      "Records commit and sha256 provenance for the vendored artifact"
+    ]
+  },
+  {
+    "skills": [
+      "searching-farm-strategy-space"
+    ],
+    "query": "Voids never show up with my numeric facets.",
+    "files": [],
+    "expected_behavior": [
+      "Explains numeric encodings are denser than text embeddings",
+      "Lowers min_radius, min_void_separation and anchor_distance_window",
+      "Checks there are at least three priced anchors"
+    ]
+  }
+]

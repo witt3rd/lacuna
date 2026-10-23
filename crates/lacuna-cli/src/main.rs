@@ -372,6 +372,7 @@ fn cmd_voids(args: &[String]) -> Result<String, String> {
         min_radius: opts.min_radius,
         min_void_separation: 0.16,
         facet_weights: opts.weights,
+        ..Default::default()
     };
     let voids = find_interior_voids(&snapshot.schema, &snapshot.entities, &cfg);
 
@@ -417,6 +418,7 @@ fn cmd_probe(args: &[String]) -> Result<String, String> {
         min_radius: opts.min_radius,
         min_void_separation: 0.16,
         facet_weights: opts.weights,
+        ..Default::default()
     };
     let voids = find_interior_voids(&snapshot.schema, &snapshot.entities, &cfg);
     let void = voids
@@ -475,6 +477,7 @@ fn cmd_synthesize(args: &[String]) -> Result<String, String> {
         min_radius: opts.min_radius,
         min_void_separation: 0.16,
         facet_weights: opts.weights.clone(),
+        ..Default::default()
     };
     let voids = find_interior_voids(&snapshot.schema, &snapshot.entities, &cfg);
     let selected_voids: Vec<_> = if let Some(id) = target_id {
@@ -552,6 +555,7 @@ fn build_explorer_bundle(opts: &CommonOpts) -> Result<ExplorerBundle, String> {
         min_radius: opts.min_radius,
         min_void_separation: 0.16,
         facet_weights: Some(weights),
+        ..Default::default()
     };
     let voids = find_interior_voids(&snapshot.schema, &snapshot.entities, &cfg);
 

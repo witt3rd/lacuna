@@ -1,0 +1,38 @@
+[
+  {
+    "skills": [
+      "onboarding-lacuna-domains"
+    ],
+    "query": "I have a spreadsheet of 300 startups. Find gaps nobody is funding.",
+    "files": [],
+    "expected_behavior": [
+      "Writes a DomainSchema with orthogonal facets (mechanism vs surface context) and demand/quality metric names",
+      "Converts rows to DomainEntity JSONL with demand_signal and quality_signal",
+      "Runs lacuna ingest, then lacuna voids --top-k \u2026 --json, then lacuna field"
+    ]
+  },
+  {
+    "skills": [
+      "onboarding-lacuna-domains"
+    ],
+    "query": "Can lacuna work on patent claims?",
+    "files": [],
+    "expected_behavior": [
+      "Explains lacuna is domain-agnostic and needs only a schema and entities",
+      "Proposes concrete patent facets with default weights summing sensibly",
+      "Notes empty vectors are embedded deterministically by lacuna ingest"
+    ]
+  },
+  {
+    "skills": [
+      "onboarding-lacuna-domains"
+    ],
+    "query": "My voids all look the same; the facets overlap.",
+    "files": [],
+    "expected_behavior": [
+      "Diagnoses non-orthogonal facets",
+      "Suggests separating structural mechanics from surface context",
+      "Suggests reweighting with --weights before re-ingesting"
+    ]
+  }
+]

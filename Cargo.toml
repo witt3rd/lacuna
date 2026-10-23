@@ -4,11 +4,12 @@ members = [
     "crates/lacuna-rung",
     "crates/lacuna-gpu",
     "crates/lacuna-cli",
+    "crates/lacuna-wasm",
 ]
 resolver = "2"
 
 [workspace.package]
-version = "0.1.0"
+version = "0.3.0"
 edition = "2024"
 rust-version = "1.88"
 license = "MIT OR Apache-2.0"
@@ -22,3 +23,12 @@ serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 serde_yaml = "0.9"
 sha2 = "0.10"
+
+# Small, deterministic browser artifact: `cargo build -p lacuna-wasm --target wasm32-unknown-unknown --profile wasm`
+[profile.wasm]
+inherits = "release"
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

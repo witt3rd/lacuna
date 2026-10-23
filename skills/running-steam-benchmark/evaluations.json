@@ -1,0 +1,38 @@
+[
+  {
+    "skills": [
+      "running-steam-benchmark"
+    ],
+    "query": "Run the Steam demo and give me the explorer page.",
+    "files": [],
+    "expected_behavior": [
+      "Runs cargo run --release -p lacuna-cli -- demo steam --top-k 5 with --svg/--html into out/",
+      "Explains bare filenames land in the gitignored out/ directory",
+      "Does not require network access for the offline run"
+    ]
+  },
+  {
+    "skills": [
+      "running-steam-benchmark"
+    ],
+    "query": "Scale the Steam demo to 10,000 games.",
+    "files": [],
+    "expected_behavior": [
+      "Uses demo steam --count 10000 --top-k \u2026 --json",
+      "Writes results to out/",
+      "Mentions runtime grows with corpus size and suggests a smaller count first"
+    ]
+  },
+  {
+    "skills": [
+      "running-steam-benchmark"
+    ],
+    "query": "Use the real 100k Steam dataset.",
+    "files": [],
+    "expected_behavior": [
+      "Converts the dataset to DomainEntity JSONL with the five axes (core_loop, progression, social_topology, aesthetic_world, player_hook)",
+      "Passes --input to lacuna voids/synthesize/field",
+      "Uses --live-llm/--jev only with Doppler credentials configured"
+    ]
+  }
+]

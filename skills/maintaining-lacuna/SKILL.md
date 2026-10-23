@@ -1,12 +1,9 @@
 ---
-name: lacuna
-description: >
-  Lived experience and caretaker guide for the lacuna repo (~/src/witt3rd/lacuna).
-  Load when working on lacuna: house git (iterate on master, rebase), CI gates,
-  rung dependency pinning, and ladder invariants.
+name: maintaining-lacuna
+description: Maintains the lacuna repository: house git workflow (iterate on master, rebase), CI gates (fmt, clippy, tests, docs), rung dependency pinning and the ladder invariants that must never be bypassed. Use when changing, reviewing, testing or releasing code in the lacuna repo.
 metadata:
-  home: ~/src/witt3rd/lacuna/skills/lacuna
-  aliases: [lacuna-repo, lacuna-caretaker]
+  home: ~/src/witt3rd/lacuna/skills/maintaining-lacuna
+  aliases: [lacuna, lacuna-repo, lacuna-caretaker]
 ---
 
 # lacuna — how we act in this tree

@@ -1,11 +1,9 @@
 ---
-name: steam-benchmark
-description: >
-  Playbook for running the flagship 100,000+ Steam Games Whitespace Explorer
-  (@SyntheticBeef viral challenge) using lacuna and rung-agent.
+name: running-steam-benchmark
+description: Runs the flagship Steam games whitespace benchmark (the @SyntheticBeef challenge) with lacuna and rung-agent: the built-in seed and procedural catalogs, live abduction with the Jev viability judge, and ingesting a full external Steam dataset into five-axis DomainEntity JSONL. Use when reproducing or scaling the Steam demo, or benchmarking lacuna on a large catalog.
 metadata:
-  home: ~/src/witt3rd/lacuna/skills/steam-benchmark
-  aliases: [steam-whitespace, synthetic-beef-test]
+  home: ~/src/witt3rd/lacuna/skills/running-steam-benchmark
+  aliases: [steam-benchmark, steam-whitespace, synthetic-beef-test]
 ---
 
 # Flagship Benchmark: The Steam Games Whitespace Explorer

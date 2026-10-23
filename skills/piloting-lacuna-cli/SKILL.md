@@ -1,12 +1,9 @@
 ---
-name: pilot-cli
-description: >
-  How an autonomous agent (e.g., rung-agent) pilots the `lacuna` CLI end-to-end
-  using deterministic JSON output, facet weight steering, rung::ladder! synthesis,
-  rung_std::decide viability scoring, and SVG/WebGPU field export.
+name: piloting-lacuna-cli
+description: Drives the lacuna CLI end-to-end as an autonomous agent with deterministic JSON output: schema inspection, voids with facet-weight steering, probe, rung-ladder synthesis with rung_std::decide viability scoring, and SVG/WebGPU field export. Use when running lacuna from an agent or script, interpreting VoidCandidate or VerifiedOpportunity JSON, or steering a search toward a facet subspace.
 metadata:
-  home: ~/src/witt3rd/lacuna/skills/pilot-cli
-  aliases: [lacuna-pilot, lacuna-cli]
+  home: ~/src/witt3rd/lacuna/skills/piloting-lacuna-cli
+  aliases: [pilot-cli, lacuna-pilot, lacuna-cli]
 ---
 
 # Piloting `lacuna` as an Autonomous Agent

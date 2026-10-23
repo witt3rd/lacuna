@@ -1124,7 +1124,7 @@ dependencies = [
 
 [[package]]
 name = "lacuna-cli"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "lacuna-core",
  "lacuna-gpu",
@@ -1136,7 +1136,7 @@ dependencies = [
 
 [[package]]
 name = "lacuna-core"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "serde",
  "serde_json",
@@ -1145,7 +1145,7 @@ dependencies = [
 
 [[package]]
 name = "lacuna-gpu"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "lacuna-core",
  "lacuna-rung",
@@ -1155,7 +1155,7 @@ dependencies = [
 
 [[package]]
 name = "lacuna-rung"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "lacuna-core",
  "rung",
@@ -1164,6 +1164,15 @@ dependencies = [
  "serde",
  "serde_json",
  "serde_yaml",
+]
+
+[[package]]
+name = "lacuna-wasm"
+version = "0.3.0"
+dependencies = [
+ "lacuna-core",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

@@ -1,6 +1,7 @@
 #![doc = include_str!("../../../README.md")]
 
 pub mod metric;
+pub mod numeric;
 pub mod schema;
 pub mod steam;
 pub mod void;
@@ -10,12 +11,18 @@ pub use metric::{
     cosine_distance, entity_distance, geodesic_simplex_point, min_distance_to_corpus,
     optimize_interior_simplex_center, point_to_entity_distance, point_to_point_distance,
 };
+pub use numeric::{
+    DecodedValue, NumericAxis, NumericValue, decode_numeric, encode_numeric, numeric_dim,
+};
 pub use schema::{
     CorpusSnapshot, DEFAULT_EMBED_DIM, DomainEntity, DomainSchema, FacetSpec, deterministic_embed,
     normalize_in_place,
 };
 pub use steam::{generate_steam_catalog, steam_domain_schema, steam_seed_snapshot};
-pub use void::{BoundaryNeighbor, VoidCandidate, VoidSolverConfig, find_interior_voids};
+pub use void::{
+    BoundaryNeighbor, DEFAULT_ANCHOR_DISTANCE_WINDOW, VoidCandidate, VoidSolverConfig,
+    find_interior_voids,
+};
 pub use voronoi::{
     FieldGrid, FieldSample, MANIFOLD_BOUND, compute_field_grid, compute_voronoi_cell, polygon_area,
     project_entities_2d, project_point_2d,
@@ -35,6 +42,7 @@ mod tests {
             min_radius: 0.15,
             min_void_separation: 0.15,
             facet_weights: None,
+            ..Default::default()
         };
         let voids = find_interior_voids(&snapshot.schema, &snapshot.entities, &cfg);
         assert!(

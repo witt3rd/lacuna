@@ -1,11 +1,9 @@
 ---
-name: domain-onboarding
-description: >
-  How to onboard any new domain (Venture Capital, Patent Landscapes, Drug Discovery,
-  SaaS Feature Matrices, Academic Literature) onto lacuna's Four-Layer Input Contract.
+name: onboarding-lacuna-domains
+description: Onboards a new domain (for example venture capital, patents, drug discovery, SaaS features or research literature) onto lacuna's four-layer input contract: a DomainSchema with orthogonal facets, DomainEntity JSONL, then ingest, voids and field. Use when a user wants to apply lacuna to a new dataset or domain, or asks how to write schema.json or entities.jsonl.
 metadata:
-  home: ~/src/witt3rd/lacuna/skills/domain-onboarding
-  aliases: [lacuna-domain, lacuna-schema]
+  home: ~/src/witt3rd/lacuna/skills/onboarding-lacuna-domains
+  aliases: [domain-onboarding, lacuna-domain, lacuna-schema]
 ---
 
 # Onboarding a New Domain into `lacuna`

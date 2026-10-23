@@ -1,0 +1,38 @@
+[
+  {
+    "skills": [
+      "maintaining-lacuna"
+    ],
+    "query": "Add a public constructor for VerifiedOpportunity so the CLI can build one directly from a void.",
+    "files": [],
+    "expected_behavior": [
+      "Refuses to add a bypass constructor and explains VerifiedOpportunity is ladder-gated through lacuna_rung::synthesize_void",
+      "Proposes routing the CLI through the SynthesizeVoid ladder instead",
+      "Runs or lists the CI gates (cargo fmt --check, clippy -D warnings, cargo test --workspace --locked, cargo doc) before committing"
+    ]
+  },
+  {
+    "skills": [
+      "maintaining-lacuna"
+    ],
+    "query": "Speed up void search by sampling random points around the corpus instead of the simplex solver.",
+    "files": [],
+    "expected_behavior": [
+      "Keeps interior geodesic search (geodesic_simplex_point) and explains boundary drift outside the convex hull",
+      "Does not introduce unconstrained Euclidean perturbation",
+      "Keeps tests deterministic and offline (no network, no API keys)"
+    ]
+  },
+  {
+    "skills": [
+      "maintaining-lacuna"
+    ],
+    "query": "Add a new section with a shell example to AGENTS.md.",
+    "files": [],
+    "expected_behavior": [
+      "Edits AGENTS.md, not the README.md symlink",
+      "Labels the fenced code block (bash/text/json) so the lacuna-core doctest gate passes",
+      "Stages only the touched files rather than git add -A"
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+[package]
+name = "lacuna-wasm"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "wasm32 C-ABI JSON bridge to lacuna-core for in-browser whitespace discovery (no wasm-bindgen)"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+lacuna-core = { path = "../lacuna-core" }
+serde.workspace = true
+serde_json.workspace = true

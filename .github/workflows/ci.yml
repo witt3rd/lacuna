@@ -22,6 +22,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt, clippy
+          targets: wasm32-unknown-unknown
       - uses: Swatinem/rust-cache@v2
       - name: fmt
         run: cargo fmt --check
@@ -33,3 +34,7 @@ jobs:
         run: cargo test --workspace --locked
       - name: cli smoke (steam demo)
         run: cargo run -q -p lacuna-cli --locked -- demo steam --top-k 2 --json >/dev/null
+      - name: wasm bridge (lacuna-wasm, no imports)
+        run: |
+          cargo build -p lacuna-wasm --target wasm32-unknown-unknown --profile wasm --locked
+          node -e 'const m=new WebAssembly.Module(require("fs").readFileSync("target/wasm32-unknown-unknown/wasm/lacuna_wasm.wasm"));if(WebAssembly.Module.imports(m).length)process.exit(1)'

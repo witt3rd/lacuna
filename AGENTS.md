@@ -46,7 +46,13 @@ crates/lacuna-rung   rung::ladder! (SynthesizeVoid), rung_std::decide viability 
 crates/lacuna-gpu    WGSL topographic potential-field shader (field.wgsl), SVG vector
                      manifold renderer, and self-contained WebGPU/Shader HTML explorer
 crates/lacuna-cli    The `lacuna` binary: 100% agent-pilotable CLI (--json everywhere)
+crates/lacuna-wasm   wasm32 C-ABI JSON bridge (`lacuna_call`) to lacuna-core for in-browser
+                     discovery; no wasm-bindgen, no imports, deterministic
 ```
+
+Numeric decision domains (farm inputs, sale timing, contract mix) use
+`lacuna_core::numeric`: an invertible encoding whose void centers decode back to
+concrete parameter values. See [`searching-farm-strategy-space`](skills/searching-farm-strategy-space/SKILL.md).
 
 ---
 
@@ -100,6 +106,7 @@ cargo fmt --check
 cargo clippy --workspace --all-targets --locked -- -D warnings
 cargo test --workspace --locked
 RUSTDOCFLAGS="-D warnings" cargo doc --workspace --no-deps --locked
+cargo build -p lacuna-wasm --target wasm32-unknown-unknown --profile wasm --locked
 ```
 
 ---
@@ -108,7 +115,8 @@ RUSTDOCFLAGS="-D warnings" cargo doc --workspace --no-deps --locked
 
 | Skill | One Line |
 |---|---|
-| [`lacuna`](skills/lacuna/SKILL.md) | Repo caretaker: house git (`master` iteration, rebase), CI gates, `rung` tag pinning, release procedure |
-| [`pilot-cli`](skills/pilot-cli/SKILL.md) | How an agent pilots `lacuna` via CLI (`ingest → voids → probe → synthesize → field`) with `--json` |
-| [`domain-onboarding`](skills/domain-onboarding/SKILL.md) | Onboarding any domain (VC, Patents, Pharma, SaaS, Research) onto the 4-layer input contract |
-| [`steam-benchmark`](skills/steam-benchmark/SKILL.md) | Playbook for the 100,000+ Steam Games Whitespace Explorer (`@SyntheticBeef` challenge) |
+| [`maintaining-lacuna`](skills/maintaining-lacuna/SKILL.md) | Repo caretaker: house git (`master` iteration, rebase), CI gates, `rung` tag pinning, release procedure |
+| [`piloting-lacuna-cli`](skills/piloting-lacuna-cli/SKILL.md) | How an agent pilots `lacuna` via CLI (`ingest → voids → probe → synthesize → field`) with `--json` |
+| [`onboarding-lacuna-domains`](skills/onboarding-lacuna-domains/SKILL.md) | Onboarding any domain (VC, Patents, Pharma, SaaS, Research) onto the 4-layer input contract |
+| [`searching-farm-strategy-space`](skills/searching-farm-strategy-space/SKILL.md) | lacuna as the whitespace-search stage of the CAPPZ HARVEST farm economic discovery engine |
+| [`running-steam-benchmark`](skills/running-steam-benchmark/SKILL.md) | Playbook for the 100,000+ Steam Games Whitespace Explorer (`@SyntheticBeef` challenge) |
